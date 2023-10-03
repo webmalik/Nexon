@@ -1,6 +1,6 @@
 import $ from "jquery";
-import Aos from "aos";
-import Siema from "siema";
+import gsap from "gsap";
+
 
 export function isWebp() {
 	function testWebP(callback) {
@@ -69,65 +69,4 @@ export function pageNav() {
 	}
 
 	$(window).on('scroll', activateMenuItem);
-}
-
-export function aos_js() {
-	Aos.init();
-}
-
-export function slider() {
-	const slider = new Siema({
-		selector: '.slider',
-		loop: true,
-		onChange: updatePagination,
-		duration: 1000,
-		perPage: 4,
-		easing: 'ease-out',
-	});
-
-	function updatePagination() {
-		const paginationItems = Array.from(document.querySelectorAll('.slider-pagination li'));
-		paginationItems.map((item, index) => {
-			if (index === slider.currentSlide) {
-				item.classList.add('active');
-			} else {
-				item.classList.remove('active');
-			}
-		});
-	}
-
-	function startAutoPlay(intervalTime) {
-		let autoPlayInterval = setInterval(function () {
-			slider.next();
-			updatePagination();
-		}, intervalTime);
-	}
-	updatePagination();
-	startAutoPlay(5000);
-}
-
-export function tel() {
-	var input = document.getElementById("phone-ip");
-
-	input.onfocus = function (e) {
-		if (this.value === '') {
-			this.value += '+38 (';
-		}
-	};
-
-	input.onkeyup = function (e) {
-		var len = this.value.length;
-		if (len === 8) {
-			this.value += ') ';
-		}
-		if (len === 9) {
-			this.value += ' ';
-		}
-		if (len === 12) {
-			this.value += '-';
-		}
-	}
-	if (len === 15) {
-		this.value += '-';
-	}
 }
