@@ -74,7 +74,7 @@
 	&__circle {
 		@include adaptiv-value("width", 242, 125, 1);
 		@include adaptiv-value("height", 242, 125, 1);
-		animation: rotate 10s linear infinite;
+		animation: rotate 20s linear infinite;
 		position: absolute;
 		top: 0;
 		left: 0;

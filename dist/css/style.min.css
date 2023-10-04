@@ -428,7 +428,7 @@ html.has-scroll-dragging {
 .banner__circle {
   width: 242px;
   height: 242px;
-  animation: rotate 10s linear infinite;
+  animation: rotate 20s linear infinite;
   position: absolute;
   top: 0;
   left: 0;
