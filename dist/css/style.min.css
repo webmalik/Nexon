@@ -223,8 +223,10 @@ button {
 /*
 	! Media mixin
 */
-body {
+body,
+html {
   font-family: "Gilroy", sans-serif;
+  height: 100%;
 }
 
 a {
@@ -234,14 +236,29 @@ a {
 .wrapper {
   position: relative;
   background-color: #151515;
+  height: 100%;
 }
 
 .block {
+  max-height: 100vh;
+  height: 100%;
+  position: relative;
   background-image: linear-gradient(rgba(255, 255, 255, 0.07) 2px, transparent 2px), linear-gradient(90deg, rgba(255, 255, 255, 0.07) 2px, transparent 2px), linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
   background-size: 120px 120px, 120px 120px, 20px 20px, 20px 20px;
   background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+  animation: gradientAnimation 5s linear;
 }
 
+@keyframes gradientAnimation {
+  0% {
+    background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+    background-size: 0 0, 0 0, 0 0, 0 0;
+  }
+  100% {
+    background-position: 118px 118px, 118px 118px, 19px 19px, 19px 19px;
+    background-size: 120px 120px, 120px 120px, 20px 20px, 20px 20px;
+  }
+}
 .container {
   max-width: 1600px;
   margin: 0 auto;
@@ -259,17 +276,17 @@ a {
 }
 @media (max-width: 1360px) {
   .container {
-    max-width: 1100px;
+    max-width: 1200px;
   }
 }
 @media (max-width: 1200px) {
   .container {
-    max-width: 900px;
+    max-width: 980px;
   }
 }
 @media (max-width: 992px) {
   .container {
-    max-width: 768px;
+    max-width: 767px;
   }
 }
 @media (max-width: 767px) {
@@ -278,10 +295,84 @@ a {
     padding: 0 2rem;
   }
 }
+html.has-scroll-smooth {
+  overflow: hidden;
+}
+html.has-scroll-dragging {
+  user-select: none;
+}
+
+.has-scroll-smooth body {
+  overflow: hidden;
+}
+
+.has-scroll-smooth [data-scroll-container] {
+  min-height: 100vh;
+}
+[data-scroll-direction=horizontal] [data-scroll-container] {
+  height: 100vh;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+[data-scroll-direction=horizontal] [data-scroll-section] {
+  display: inline-block;
+  vertical-align: top;
+  white-space: nowrap;
+  height: 100%;
+}
+
+.c-scrollbar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 11px;
+  height: 100%;
+  transform-origin: center right;
+  transition: transform 0.3s, opacity 0.3s;
+  opacity: 0;
+}
+.c-scrollbar:hover {
+  transform: scaleX(1.45);
+}
+.c-scrollbar:hover, .has-scroll-scrolling .c-scrollbar, .has-scroll-dragging .c-scrollbar {
+  opacity: 1;
+}
+[data-scroll-direction=horizontal] .c-scrollbar {
+  width: 100%;
+  height: 10px;
+  top: auto;
+  bottom: 0;
+  transform: scaleY(1);
+}
+[data-scroll-direction=horizontal] .c-scrollbar:hover {
+  transform: scaleY(1.3);
+}
+
+.c-scrollbar_thumb {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: black;
+  opacity: 0.5;
+  width: 7px;
+  border-radius: 10px;
+  margin: 2px;
+  cursor: grab;
+}
+.has-scroll-dragging .c-scrollbar_thumb {
+  cursor: grabbing;
+}
+[data-scroll-direction=horizontal] .c-scrollbar_thumb {
+  right: auto;
+  bottom: 0;
+}
+
 .header__menu {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-top: 3.31rem;
 }
 .header__menu-button {
   color: #fff;
@@ -291,6 +382,12 @@ a {
   font-weight: 500;
   line-height: 100%;
   letter-spacing: -0.025rem;
+  padding: 1rem 1.88rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  border-radius: 6.25rem;
+  border: 1px solid #fff;
   padding: 1rem 1.88rem;
 }
 .header__menu-wrapper {
@@ -318,9 +415,23 @@ a {
   padding: 1rem 1.88rem;
 }
 
+.main__banner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  position: relative;
+  transform: translateY(-100%);
+  margin-top: 50%;
+}
+
 .banner__circle {
   width: 242px;
   height: 242px;
+  animation: rotate 10s linear infinite;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 @media (max-width: 1600px) {
   .banner__circle {
@@ -337,24 +448,61 @@ a {
   height: 100%;
   object-fit: cover;
 }
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 .banner__subtitle {
   color: #fff;
   font-family: "Gilroy", sans-serif;
-  font-size: 1.5rem;
   font-style: normal;
   font-weight: 700;
   line-height: 150%; /* 2.25rem */
   max-width: 20.375rem;
 }
+@media (max-width: 767px) {
+  .banner__subtitle {
+    font-size: calc(16px + 13.6 * ((100vw - 320px) / 1920));
+  }
+}
+@media (min-width: 767px) {
+  .banner__subtitle {
+    font-size: calc(16px + 8 * (100vw / 1920));
+  }
+}
+.banner__subtitle-top {
+  margin-right: 0;
+  margin-left: auto;
+  margin-bottom: 3.69rem;
+}
+.banner__subtitle-bottom {
+  position: absolute;
+  bottom: 2rem;
+  left: 0;
+  max-width: 22.5625rem;
+}
 .banner__title {
   color: #fff;
   font-family: "Gilroy", sans-serif;
-  font-size: 12.25rem;
   font-style: normal;
   font-weight: 600;
   line-height: 100%; /* 12.25rem */
   letter-spacing: -0.245rem;
   text-transform: uppercase;
+}
+@media (max-width: 767px) {
+  .banner__title {
+    font-size: calc(36px + 272 * ((100vw - 320px) / 1920));
+  }
+}
+@media (min-width: 767px) {
+  .banner__title {
+    font-size: calc(36px + 160 * (100vw / 1920));
+  }
 }
 .banner__right {
   text-align: right;
@@ -364,4 +512,8 @@ a {
 }
 .banner__silver {
   color: #444;
+}
+
+.menu {
+  min-height: 500vh;
 }

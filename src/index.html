@@ -6,8 +6,10 @@
 })
 
 <body>
-	@@include("html/main.html", {})
-	@@include("html/footer.html", {})
+	<div class="scroll-wrapper" data-scroll-container>
+		@@include("html/main.html", {})
+		@@include("html/footer.html", {})
+	</div>
 	@@include("html/scripts.html", {})
 </body>
 

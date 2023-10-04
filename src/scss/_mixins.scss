@@ -58,7 +58,7 @@
 	}
 
 	@media (min-width: 767px) {
-		font-size: calc(#{$mobSize + px} + #{$addMobSize} * (100vw / #{$maxWidth}));
+		font-size: calc(#{$mobSize + px} + #{$addSize} * (100vw / #{$maxWidth}));
 	}
 }
 

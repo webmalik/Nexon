@@ -1,5 +1,7 @@
-body {
+body,
+html {
 	font-family: $font-family;
+	height: 100%;
 }
 
 a {
@@ -9,9 +11,13 @@ a {
 .wrapper {
 	position: relative;
 	background-color: $black_color;
+	height: 100%;
 }
 
 .block {
+	max-height: 100vh;
+	height: 100%;
+	position: relative;
 	background-image: linear-gradient(rgba(255, 255, 255, 0.07) 2px, transparent 2px),
 		linear-gradient(90deg, rgba(255, 255, 255, 0.07) 2px, transparent 2px),
 		linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
@@ -26,6 +32,34 @@ a {
 		-2px -2px,
 		-1px -1px,
 		-1px -1px;
+	animation: gradientAnimation 5s linear;
+}
+
+@keyframes gradientAnimation {
+	0% {
+		background-position:
+			-2px -2px,
+			-2px -2px,
+			-1px -1px,
+			-1px -1px;
+		background-size:
+			0 0,
+			0 0,
+			0 0,
+			0 0;
+	}
+	100% {
+		background-position:
+			118px 118px,
+			118px 118px,
+			19px 19px,
+			19px 19px;
+		background-size:
+			120px 120px,
+			120px 120px,
+			20px 20px,
+			20px 20px;
+	}
 }
 
 .container {
@@ -46,17 +80,17 @@ a {
 }
 @include media-width(1360px) {
 	.container {
-		max-width: 1100px;
+		max-width: 1200px;
 	}
 }
 @include media-width(1200px) {
 	.container {
-		max-width: 900px;
+		max-width: 980px;
 	}
 }
 @include media-width($md) {
 	.container {
-		max-width: 768px;
+		max-width: $sm;
 	}
 }
 @include media-width($sm) {

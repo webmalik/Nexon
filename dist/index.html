@@ -10,7 +10,8 @@
 </head>
 
 <body>
-	<div class="wrapper">
+	<div class="scroll-wrapper" data-scroll-container>
+		<div class="wrapper">
 	<div class="block">
 		<header class="header">
 			<div class="container">
@@ -35,23 +36,24 @@
 				</div>
 			</div>
 		</header>
-		<main class="main">
+		<main class="main" data-scroll-section>
 			<div class="container">
 				<div class="main__banner banner">
 					<div class="banner__circle">
 						<img src="img/circle.png" alt="Circle">
 					</div>
-					<div class="banner__subtitle banner__subtitle-top">
+					<div class="banner__subtitle banner__subtitle-top" data-scroll data-scroll-speed="3">
 						Разработка вашего веб-продукта с учетом дизайна
 					</div>
 					<div class="banner__title">
-						<div class="banner__right text">
+						<div class="banner__right text" data-scroll data-scroll-direction="horizontal" data-scroll-speed="-20"
+							data-scroll-speed="-2">
 							ДЕЛАЕМ САЙТЫ
 						</div>
-						<div class="banner__left">
+						<div class="banner__left" data-scroll data-scroll-sticky data-scroll-target=".menu">
 							НА КОТОРЫХ
 						</div>
-						<div class="banner__right banner__silver">
+						<div class="banner__right banner__silver" data-scroll data-scroll-speed="5">
 							СИДЯТ.
 						</div>
 					</div>
@@ -67,11 +69,12 @@
 <div class="menu">
 
 </div>
-	<footer>
+		<footer>
 	<div>
 
 	</div>
 </footer>
+	</div>
 	<script src="js/app.min.js"></script>
 </body>
 

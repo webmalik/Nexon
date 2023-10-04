@@ -1,6 +1,15 @@
 import $ from "jquery";
 import gsap from "gsap";
+import LocomotiveScroll from 'locomotive-scroll';
 
+export function locomotive() {
+	const scroll = new LocomotiveScroll({
+		el: document.querySelector('[data-scroll-container]'),
+		smooth: true,
+		tablet: { smooth: true },
+		smartphone: { smooth: true }
+	});
+}
 
 export function isWebp() {
 	function testWebP(callback) {

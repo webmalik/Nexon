@@ -43,6 +43,7 @@
 		"gulp-webpcss": "latest",
 		"gulp-zip": "latest",
 		"jquery": "latest",
+		"locomotive-scroll": "^4.1.4",
 		"sass": "^1.63.6",
 		"siema": "latest",
 		"style-loader": "^3.3.3",
