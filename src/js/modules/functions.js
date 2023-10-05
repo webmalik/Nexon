@@ -11,6 +11,26 @@ export function locomotive() {
 	});
 }
 
+export function header_animations() {
+
+}
+
+export function mouse() {
+	const mouse = document.querySelector('.mouse');
+	function moveMouse(e) {
+		if (e.clientX < 8 || e.clientY < 8 || e.clientY > (window.innerHeight - 8) || e.clientX > (window.innerWidth - 8)) {
+			mouse.style.opacity = 0;
+		} else {
+			mouse.style.opacity = 1;
+			mouse.style.transform = `translate(${e.clientX - 15}px, ${e.clientY - 15}px)`;
+		}
+	};
+
+	if (window.innerWidth >= 768) {
+		document.addEventListener('mousemove', moveMouse);
+	}
+}
+
 export function isWebp() {
 	function testWebP(callback) {
 

@@ -167,20 +167,6 @@ button {
 @font-face {
   font-family: "Gilroy";
   font-display: swap;
-  src: url("../fonts/Gilroy-Light.woff") format("woff"), url("../fonts/Gilroy-Light.woff2") format("woff2");
-  font-weight: Light;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Gilroy";
-  font-display: swap;
-  src: url("../fonts/Gilroy-Medium.woff") format("woff"), url("../fonts/Gilroy-Medium.woff2") format("woff2");
-  font-weight: Medium;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Gilroy";
-  font-display: swap;
   src: url("../fonts/Gilroy-Medium.woff") format("woff"), url("../fonts/Gilroy-Medium.woff2") format("woff2");
   font-weight: Medium;
   font-style: normal;
@@ -190,6 +176,13 @@ button {
   font-display: swap;
   src: url("../fonts/Gilroy-Light.woff") format("woff"), url("../fonts/Gilroy-Light.woff2") format("woff2");
   font-weight: Light;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Gilroy";
+  font-display: swap;
+  src: url("../fonts/Gilroy-Medium.woff") format("woff"), url("../fonts/Gilroy-Medium.woff2") format("woff2");
+  font-weight: Medium;
   font-style: normal;
 }
 @font-face {
@@ -197,6 +190,13 @@ button {
   font-display: swap;
   src: url("../fonts/Gilroy-Regular.woff") format("woff"), url("../fonts/Gilroy-Regular.woff2") format("woff2");
   font-weight: Regular;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Gilroy";
+  font-display: swap;
+  src: url("../fonts/Gilroy-Light.woff") format("woff"), url("../fonts/Gilroy-Light.woff2") format("woff2");
+  font-weight: Light;
   font-style: normal;
 }
 @font-face {
@@ -223,6 +223,10 @@ button {
 /*
 	! Media mixin
 */
+* {
+  cursor: none !important;
+}
+
 body,
 html {
   font-family: "Gilroy", sans-serif;
@@ -237,6 +241,31 @@ a {
   position: relative;
   background-color: #151515;
   height: 100%;
+}
+
+.mouse {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: #444;
+  transition: all 0.03s ease-in-out;
+}
+.mouse::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2rem;
+  height: 2rem;
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+  border: #444;
+  border-radius: 100%;
+  background-color: #333;
+  transition: all 0.03s ease-in-out;
 }
 
 .block {
